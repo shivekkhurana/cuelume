@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cuelume cold-start experiment</title>
+    <style>
+      body { font: 16px/1.5 system-ui, sans-serif; margin: 2rem; max-width: 52rem; }
+      button { font: inherit; padding: 0.7rem 1rem; }
+      pre { background: #f4f4f5; padding: 1rem; white-space: pre-wrap; }
+    </style>
+  </head>
+  <body>
+    <h1>Cuelume cold-start experiment</h1>
+    <p>This page runs exactly one first-use playback trial.</p>
+    <button id="run" type="button">Run cold-start trial</button>
+    <pre id="result">Waiting for a user gesture.</pre>
+    <script>
+      window.__experimentErrors = [];
+      addEventListener("error", (event) => window.__experimentErrors.push(String(event.error ?? event.message)));
+      addEventListener("unhandledrejection", (event) => window.__experimentErrors.push(String(event.reason)));
+    </script>
+    <script type="module" src="./experiment.js"></script>
+  </body>
+</html>
